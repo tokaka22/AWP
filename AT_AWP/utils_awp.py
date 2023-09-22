@@ -38,7 +38,7 @@ class AdvWeightPerturb(object):
         self.proxy.load_state_dict(self.model.state_dict())
         self.proxy.train()
         
-        loss = - F.cross_entropy(self.proxy(inputs_adv), targets)
+        loss = - F.cross_entropy(self.proxy(inputs_adv), targets) # loss上升...就是更差的模型
 
         self.proxy_optim.zero_grad()
         loss.backward()
